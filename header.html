@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="header" href="header.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=M+PLUS+1p:wght@300;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico">
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B9564XQ9SC"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-B9564XQ9SC');
+</script>
+
+<body>
+    <header>
+        <div class="header-left">
+            <a href="index.html"> <img src="/img/logo.png"></a>
+        </div>
+        <div class="header-right">
+            <div class="lang-ja" lang="ja">
+                <button class="menubutton" onclick="location.href='./index.html'">ホーム</button>
+                <button class="menubutton" onclick="location.href='./works.html'">製品</button>
+                <button class="menubutton" onclick="window.open('https://hidetyo.booth.pm/','_blank')">ストア</button>
+                <button class="menubutton" onclick="location.href='./contact.html'">ご連絡</button>
+                <button class="menubutton lang-switcher-mini" onclick="switchLang('en')">English</button>
+            </div>
+            <div class="lang-en" lang="en">
+                <button class="menubutton" onclick="location.href='./index.html'">Home</button>
+                <button class="menubutton" onclick="location.href='./works.html'">Works</button>
+                <button class="menubutton" onclick="window.open('https://hidetyo.booth.pm/','_blank')">Store</button>
+                <button class="menubutton" onclick="location.href='./contact.html'">Contact</button>
+                <button class="menubutton lang-switcher-mini" onclick="switchLang('ja')">日本語</button>
+            </div>
+        </div>
+        <nav class="lang-switcher">
+            <button class="menubutton" onclick="switchLang('ja')">日本語</button>
+            <button class="menubutton" onclick="switchLang('en')">English</button>
+        </nav>
+    </header>
+    <script src="script.js"></script>
+</body>
+
+</html>
