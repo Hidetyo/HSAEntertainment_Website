@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hsa-entmt.com/sitemap.xml
