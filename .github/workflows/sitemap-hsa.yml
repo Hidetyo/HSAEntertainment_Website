@@ -1,0 +1,44 @@
+name: サイトマップ自動生成
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'sitemap.xml'
+      - '.github/**'
+      - 'img/**'
+      - '**.css'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sitemap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # <lastmod> にコミット日を使うため全履歴が必要
+
+      - name: sitemap.xml を生成
+        env:
+          SITE_BASE_URL: https://hsa-entmt.com/
+          EXCLUDE_BASES: header,footer
+        run: python3 .github/scripts/generate_sitemap.py
+
+      - name: 変更があればコミット
+        run: |
+          if [ -z "$(git status --porcelain sitemap.xml)" ]; then
+            echo "sitemap.xml に変更なし。何もしません。"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "chore: sitemap.xml を自動更新"
+          git push
